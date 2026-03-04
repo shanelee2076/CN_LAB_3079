@@ -1,0 +1,15 @@
+import random
+
+class FakePacket:
+    def __init__(self):
+        self.src = f"192.168.1.{random.randint(1, 254)}"
+        self.dst = f"192.168.1.{random.randint(1, 254)}"
+
+    def summary(self):
+        return f"Fake TCP Packet from {self.src} to {self.dst}"
+
+def packet_handler(packet):
+    print(packet.summary())
+
+for _ in range(5):
+    packet_handler(FakePacket())
